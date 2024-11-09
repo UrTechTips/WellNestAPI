@@ -9,6 +9,7 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 api_key = os.environ.get("GEN_AI_KEY")
+port = os.environ.get("PORT")
 genai.configure(api_key=api_key)  
 generation_config = {
   "temperature": 1,
@@ -62,5 +63,6 @@ def index():
         response_dict = json.loads(response.text)
         return jsonify({"status": 200, "message": response_dict})  
 
+
 if __name__ == "__main__":
-    app.run(port=8080, debug=True)
+    app.run(port=port)
