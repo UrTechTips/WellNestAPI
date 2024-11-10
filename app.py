@@ -49,7 +49,7 @@ model = genai.GenerativeModel("gemini-1.5-flash", generation_config=generation_c
 
 @app.route("/getTip", methods=['POST'])
 @cross_origin()
-def index():
+def dailyTip():
     data = request.json  
     cityName = data.get('cityName')
     temp = round(data.get('temp') - 273.15)  # Converted to Celsius
@@ -71,7 +71,7 @@ def index():
 
 @app.route("/getWeeklyTip", methods=['POST'])
 @cross_origin()
-def index():
+def weeklyTip():
     data = request.json  
     moods = data.get('moods', {})
     activities = data.get('activities', {})
